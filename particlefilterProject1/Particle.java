@@ -66,7 +66,8 @@ public class Particle {
     
     public float weightCalc(float targetDist, float landmarks[]) {
         float d = this.dist(landmarks);
-        weight *= (float)Math.exp(-((float)Math.pow(d - targetDist, 2)) / ((float)Math.pow(senseNoise, 2) * 2.0)) / (float)Math.sqrt(2.0 * Math.PI * Math.pow(senseNoise, 2));       
+        weight *= (float)Math.exp(-((float)Math.pow(d - targetDist, 2)) / ((float)Math.pow(senseNoise, 2) * 2.0)) 
+            / (float)Math.sqrt(2.0 * Math.PI * Math.pow(senseNoise, 2));       
         return weight; 
     }
     
@@ -74,7 +75,8 @@ public class Particle {
         float dist = 99999f;
         float d;
         for (int i=0; i<landmarks.length; i=i+2) {
-            d = (float)Math.sqrt((((float)Array.get(landmarks,i)-this.x)*((float)Array.get(landmarks,i) - this.x) + ((float)Array.get(landmarks,i+1) - this.y)* ((float)Array.get(landmarks,i+1) - this.y)));
+            d = (float)Math.sqrt((((float)Array.get(landmarks,i)-this.x)*((float)Array.get(landmarks,i) - this.x) 
+                                  + ((float)Array.get(landmarks,i+1) - this.y) * ((float)Array.get(landmarks,i+1) - this.y)));
             if (dist > d) {
                 dist = d;
             }
